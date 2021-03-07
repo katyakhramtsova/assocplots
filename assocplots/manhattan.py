@@ -25,6 +25,8 @@ def manhattan(p1, pos1, chr1, label1,
                top2 = 0,
                lines = [10, 15],
                lines_colors = ['g', 'r'],
+               lines_styles = ['-', '--'],
+               lines_widths = [1,1],
                zoom = None,
                scaling = '-log10'):
     '''
@@ -47,6 +49,8 @@ def manhattan(p1, pos1, chr1, label1,
     :param top: Defines the upper limit of the plot. If 0, it is detected automatically.
     :param lines: Horizontal lines to plot.
     :param lines_colors: Colors for the horizontal lines.
+    :param lines_styles: Styles for the horizontal lines.
+    :param lines_widths: Widths for the horizontal lines.
     :param zoom: [chromosome, position, range] Zooms into a region.
     :param scaling: '-log10' or 'none' (default -log10)
     :return:
@@ -158,12 +162,12 @@ def manhattan(p1, pos1, chr1, label1,
     for i, y in enumerate(lines):
         if plot_type != 'single':
             plt.subplot(2,1,1)
-            plt.plot([0, shift_label], [y, y], color = lines_colors[i])
+            plt.axhline(y=y, color=lines_colors[i], linestyle=lines_styles[i], linewidth=lines_widths[i])
             plt.subplot(2,1,2)
-            plt.plot([0, shift_label], [y, y], color = lines_colors[i])
+            plt.axhline(y=y, color=lines_colors[i], linestyle=lines_styles[i], linewidth=lines_widths[i])
         else:
             plt.subplot(1,1,1)
-            plt.plot([0, shift_label], [y, y], color = lines_colors[i])
+            plt.axhline(y=y, color=lines_colors[i], linestyle=lines_styles[i], linewidth=lines_widths[i])
 
     if plot_type != 'single':
         plt.subplot(2,1,1)
